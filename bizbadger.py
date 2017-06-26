@@ -19,6 +19,22 @@ def LTV(average_revenue_per_user, period_months=1, life_time_period_months=12):
 	return (average_revenue_per_user*(life_time_period_months/float(period_months)))
 
 
+def CPA(array_channel_cost):
+	# returns an array of CPAs per channel and the total CPA. The first parameter is an array of objects. The first element of the object contains the sum
+	# invested in that channel and the second is the number of acquired customers from that channel	
+	CPA=[]
+	total_cpa=0
+	for a in array_channel_cost:
+		CPA.append(a[0]/float(a[1]))
+		total_cpa +=(a[0]/float(a[1]))
+	return CPA, total_cpa
+
+
+arr, tot = CPA([[1000,10], [2000,10],[3256,78]])
+
+print (arr)
+print (tot)
+
 #def conversion rate
 
 # a few cases
