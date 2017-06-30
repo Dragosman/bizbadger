@@ -30,11 +30,18 @@ def CPA(array_channel_cost):
 	return CPA, total_cpa
 
 
-arr, tot = CPA([[1000,10], [2000,10],[3256,78]])
+def salesGrowth_2periods(value_period1, value_period2):
+	#returns growth for a 2 period
+	return (value_period2-value_period1)/float(value_period1)
 
-print (arr)
-print (tot)
+def salesGrowth_nperiods(arr_values):
+	# n = number of periods; by default =2; a is the array with the values
+	i=0
+	growth_array=[]
+	while i<(len(arr_values)-1):
+		growth_array.append(salesGrowth_2periods(arr_values[i],arr_values[i+1]))
+		i+=1
+	return growth_array
 
-#def conversion rate
 
-# a few cases
+
