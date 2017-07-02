@@ -34,6 +34,7 @@ def salesGrowth_2periods(value_period1, value_period2):
 	#returns growth for a 2 period
 	return (value_period2-value_period1)/float(value_period1)
 
+
 def salesGrowth_nperiods(arr_values):
 	# n = number of periods; by default =2; a is the array with the values
 	i=0
@@ -42,6 +43,73 @@ def salesGrowth_nperiods(arr_values):
 		growth_array.append(salesGrowth_2periods(arr_values[i],arr_values[i+1]))
 		i+=1
 	return growth_array
+
+
+def gross_margin_calculations(revenue, variable_costs, sales_costs=0, no_products=1, fixed_costs=0):
+	cogs = variable_costs + sales_costs
+	gross_profit = revenue - cogs
+	gross_margin = gross_profit/float(revenue)	
+	gross_profit_per_product = gross_profit/float(no_products)
+	break_even = fixed_costs/gross_profit_per_product
+	# returns the gross profit, the gross margin and the number of ;products needed to be sold to reach break even
+	return gross_profit, gross_margin, break_even
+
+
+def net_profit (revenue, variable_costs, sales_costs=0, no_products=1, fixed_costs=0, other_expenses=0):
+	#subtracts all costs and for margin divides it bu floating revenue; returns float
+	# other_expenses might mean interest, amortization, depreciation, taxez
+	return (revenue-variable_costs-sales_costs-fixed_costs-other_expenses), (revenue-variable_costs-sales_costs-fixed_costs-other_expenses)/float(revenue)
+
+
+
+#functions that calculate prices before and after vat
+def price_before_vat(price_after_vat, vat):
+	return price_after_vat/float(1+vat)
+
+def price_after_vat(price_before_vat, vat):
+	# vat will be decimal
+	return price_before_vat*float(1+vat)
+
+def vat(price_before_vat, price_after_vat):
+	return (price_after_vat-price_before_vat)/float(price_before_vat)
+
+
+
+# returns - investement, equity, assets
+
+def ROI(gain_investment, cost_investment):
+	return (gain_investment-cost_investment)/float(cost_investment)
+
+
+def ROA(net_income, total_assets):
+	return (net_income)/float(total_assets)
+	#net_income = net_profit()
+
+
+def ROE(net_income, shareholder_equity):
+	return (net_income)/float(shareholder_equity)
+	#net_income = net_profit()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
