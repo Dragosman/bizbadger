@@ -91,6 +91,38 @@ def ROE(net_income, shareholder_equity):
 	#net_income = net_profit()
 
 
+def conversionRate(transactions, total_interactions):
+	# total_interactions is very generic - can mean visits, interactions with a specific page; it should be defined for each need
+	# will return a float
+	if total_interactions!=0:
+		return transactions/float(total_interactions)
+	else:
+		return 0
+
+
+def repeatRate(customers_with_second_purchase, total_customers_purchase):
+	# it is applied only on an X period of time
+	if (total_customers_purchase!=0):
+		return customers_with_second_purchase/float(total_customers_purchase)
+	else:
+		return 0
+
+
+def renewalRate(clients_renew, clients_end):
+	#clients_renew = total clients who renew after a period of time
+	#clients_end = total clients whose previous licenses came to an end
+
+	if clients_end!=0:
+		return clients_renew/float(clients_end)
+	else:
+		return 0
+
+
+def referralConversion(convertedReferrals, totalReferralInvitations):
+	if totalReferralInvitations!=0:
+		return convertedReferrals/float(totalReferralInvitations)
+	else:
+		return 0
 
 
 
