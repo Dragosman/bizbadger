@@ -61,7 +61,6 @@ def net_profit (revenue, variable_costs, sales_costs=0, no_products=1, fixed_cos
 	return (revenue-variable_costs-sales_costs-fixed_costs-other_expenses), (revenue-variable_costs-sales_costs-fixed_costs-other_expenses)/float(revenue)
 
 
-
 #functions that calculate prices before and after vat
 def price_before_vat(price_after_vat, vat):
 	return price_after_vat/float(1+vat)
@@ -125,7 +124,44 @@ def referralConversion(convertedReferrals, totalReferralInvitations):
 		return 0
 
 
+def winbackRate(churned_clients, churned_repurchase):
+	if churned_clients!=0:
+		return churned_repurchase/float(churned_clients)
+	else:
+		return -1
 
+
+def cltvTOcpa(cpa_array, cltv_array, average_cltv=0, average_cpa=0):
+	averages=0
+	array_returns=[]
+	#should be different from 0
+	# the two arrays should have the same length. If they don't have the same length, we are returning -1
+	if average_cpa!=0 and average_cltv!=0:
+		averages = average_cltv/float(average_cpa)
+	else:
+		averages = 0
+
+	if len(cpa_array)==len(cltv_array):
+		i=0
+		while (i<len(cpa_array)):
+			if(cltv_array[i]!=0):
+				array_returns.append(cpa_array[i]/float(cltv_array[i]))
+			else:
+				#appending -1000, in case CPA=0;
+				array_returns.append(-1000)
+			i+=1
+	else:
+		array_returns.append("arrays don't have the same length")
+	return array_returns, averages
+
+
+	#we assume that the two arrays have the same length and n
+
+
+# survey related calculations
+
+# def NPS(grades):
+# to calculate based on the list of grades	
 
 
 
