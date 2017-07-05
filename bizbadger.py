@@ -158,10 +158,16 @@ def cltvTOcpa(cpa_array, cltv_array, average_cltv=0, average_cpa=0):
 	#we assume that the two arrays have the same length and n
 
 
-# survey related calculations
+def NPS(list_of_grades):
+	n_detractors = 0
+	n_promoters = 0
+	for gr in list_of_grades:
+		if gr>8:
+			n_promoters+=1
+		elif gr <=6:
+			n_detractors+=1
+	return n_promoters, n_detractors, (n_promoters-n_detractors)/float(len(list_of_grades))
 
-# def NPS(grades):
-# to calculate based on the list of grades	
 
 
 
