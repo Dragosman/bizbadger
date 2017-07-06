@@ -170,6 +170,22 @@ def NPS(list_of_grades):
 
 
 
+#inventory related KPIs
+
+def inventory_turnover(sales, cogs=0, average_inventory):
+	if cogs==0:
+		return sales/float(average_inventory)
+	else:
+		return (cogs/flolat(average_inventory)), (sales/float(average_inventory))
+
+
+def days_sale_inventory(cogs, average_inventory):
+	if cogs!=0:
+		return (average_inventory/float(cogs))*365
+		#number of days it takes for the inventory to be sold
+	else:
+		return -1
+		#returns error
 
 
 
